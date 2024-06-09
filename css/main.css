@@ -1,0 +1,106 @@
+body {
+	line-height: normal;
+	font-size: initial;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: bold;
+}
+
+dl, ol, ul {
+	padding: 0px;
+	margin: 0px;
+}
+
+a{
+	text-decoration: none;
+}
+
+hr {
+	margin: 0px;
+}
+
+p {
+	margin: 0px;
+}
+
+
+/* 카테고리 */
+
+.mainCategoryDiv {
+	margin: 15px;
+	margin-top: 30px;
+	margin-bottom: 60px;
+	
+	height: auto;
+	justify-content: space-around;
+	align-items: center;
+}
+.cate1{
+	display:flex;
+	justify-content:space-around;
+}
+
+.cate2{
+	margin-top:20px;
+	display:flex;
+	justify-content:space-around;
+}
+
+.categoryLink {
+	display: inline-block;
+	align-items: center;
+	justify-content: center;
+}
+
+.categoryBgAll {
+	width: 240px;
+	height: 95px;
+	background-color: yellowgreen;
+	border-radius: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.categoryBg {
+	width: 240px;
+	height: 100px;
+	background-color: black;
+	border-radius: 10px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	justify-content: center;
+}
+
+.categoryBgDif {
+	width: 240px;
+	height: 95px;
+	background-color: gray;
+	border-radius: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.categoryBg:hover{
+	background-color: goldenrod;
+}
+
+.cateIcon {
+	font-size: 40px;
+	color: white;
+}
+
+.spanDiv {
+	display: flex;
+	margin-top: 10px;
+	justify-content: center;
+}
+
+.categoryTitle {
+	font-size: 20px;
+	font-weight: 700;
+	color: black;
+}

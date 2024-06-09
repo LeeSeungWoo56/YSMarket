@@ -1,0 +1,190 @@
+* {
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+
+/* 로고이미지 */
+.logo img {
+	display: flex;
+	justify-content: center;
+	align-items: left;
+	height: 100px;
+}
+
+
+/* 검색창 */
+.searchBar {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 630px;
+	height: 40px;
+	background-color: whitesmoke;
+	border: none;
+	border-radius: 50px;
+}
+
+.searchDetail {
+	width: 580px;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.searchDetail input {
+	width: 530px;
+	border: none;
+	background-color: whitesmoke;
+	outline: none;
+	font-size: 15px;
+}
+
+.searchDetail button {
+	border: none;
+}
+
+#searchForm {
+	display: flex;
+}
+
+
+/* 전체지우기 */
+#resetBtn {
+	display: flex;
+	width: 18px;
+	height: 18px;
+	color: gray;
+	margin-bottom: 4px;
+}
+
+#resetBtn ion-icon {
+	width: 20px;
+	height: 20px;
+}
+
+/* 검색 */
+#submitBtn img {
+	width: 20px;
+	height: 20px;
+	color: whitesmoke;
+}
+
+#submitBtn>img:hover {
+	cursor: pointer;
+}
+
+
+/*  */
+/*  */
+
+/* /검색창 */
+/*  */
+
+/* 로그인 */
+.loginSerivce {
+	display: flex;
+	justify-content: right;
+	padding-top: 10px;
+}
+
+.loginSerivce>a {
+	font-size: 14px;
+	color: gray;
+	padding-left: 25px;
+	text-decoration: none;
+}
+
+.headerMain {
+	display: flex;
+	height: 120px;
+	justify-content: space-between;
+	align-items: center;
+}
+
+#resetBtn ion-icon {
+	width: 20px;
+	height: 20px;
+}
+
+
+/* 최상단 크기 */
+#headerContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#headerContainer hr {
+	margin-top: 7px;
+	margin-bottom: 0px;
+}
+
+#fixedContainer {
+	width: 1300px;
+}
+
+/* 멤버 아이콘 */
+section {
+	padding-top: 50px;
+	width: 1350px;
+	margin: 0 auto;
+}
+
+.memberIcon {
+	display: flex;
+	align-items: center;
+}
+
+.memberIcon>a>ion-icon {
+	font-size: 27px;
+	color: green;
+	padding-right: 4px;
+}
+
+.memberIcon .storeIcon {
+	padding-right: 6px;
+}
+
+.memberIcon .myIcon {
+	font-size: 26px;
+}
+
+.memberIcon>a {
+	font-size: 17px;
+	text-decoration: none;
+	color: #313030;
+	margin-left: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-weight: 700;
+}
+
+
+
+
+/* 만든이 */
+
+#memberlist {
+	margin-top: 10px;
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.member * {
+	text-decoration: none;
+	color: black;
+	text-align: center;
+	margin-bottom: 15px;
+}
+
+.member a>p:hover {
+	color: rgb(9, 214, 19);
+}
+
+.member>p {
+	font-weight: bold;
+}
+
