@@ -165,6 +165,7 @@ public class UserDAO {
 
         return membersList;
     }
+    
     //조회
     public List<User> listmembers(User user) {
         List<User> membersList = new ArrayList<User>();
