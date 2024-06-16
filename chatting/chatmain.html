@@ -1,77 +1,103 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Chat Application</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            view-transition-name: root; 
-        }
-        .css-1mnz5cs{
-            padding-top: 64px;
-            max-height: 100vh;
-            overflow: auto;
-        }
-        .css-191thbi{
-            height: 64px;
-            position: fixed;
-            top: 0px;
-            left: 0px;
-            right: 0px;
-            z-index: 1000;
-            background-image: initial;
-            background-position: initial;
-            background-size: initial;
-            background-repeat: initial;
-            background-attachment: initial;
-            background-origin: initial;
-            background-clip: initial;
-            border-bottom: 1px solid var(--seed-semantic-color-divider-2);
-            display: flex;
-            -webkit-box-pack: center;
-            justify-content: center;
-            background-color: var(--seed-semantic-color-paper-default);
+        body {
+            font-family: 'Roboto', sans-serif;
         }
     </style>
 </head>
-<body>
-    <div id="root">
-        <div class="css-1mnz5cs">
-            <header class="css-191thbi">
-                <div class="container">
-                    <a href="/YSMarket/templete/MarketMain.jsp">
-                        <img src="" alt="연성마켓 로고" class="css-1nmpalf">
-                    </a>
-                    <button class="common-bg-hover css-1ca43ff">
-                        <img class="menu-profile-img" src="프로필 사진 주소" alt="">
-                        <div class="nickname-area">
-                            "이승우"
-                            <span class="menu-icon">
-                                <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M1 1l6 6l11 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                </svg>
-                            </span>
+<body class="bg-gray-100">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div class="w-1/4 bg-white border-r border-gray-200">
+            <div class="p-4 border-b border-gray-200">
+                <h1 class="text-xl font-bold">NAVER 톡톡</h1>
+            </div>
+            <div class="p-4">
+                <input type="text" placeholder="대화방 프로필명 검색" class="w-full p-2 border border-gray-300 rounded">
+            </div>
+            <div class="overflow-y-auto h-full">
+                <ul>
+                    <li class="p-4 flex items-center border-b border-gray-200">
+                        <img src="../image/profile.png" width="40px" height="40px" alt="Profile" class="rounded-full mr-4">
+                        <div>
+                            <h2 class="font-bold">코인비엠에스</h2>
+                            <p class="text-sm text-gray-500">전시회식권 NT750XFT-A71A</p>
                         </div>
+                    </li>
+                    <li class="p-4 flex items-center border-b border-gray-200">
+                        <img src="../image/profile.png" width="40px" height="40px" alt="Profile" class="rounded-full mr-4">
+                        <div>
+                            <h2 class="font-bold">네이버웍스</h2>
+                            <p class="text-sm text-gray-500">문의하신 식권은 준비해...</p>
+                        </div>
+                    </li>
+                    <!-- Add more list items as needed -->
+                </ul>
+            </div>
+        </div>
+        <!-- Main Chat Area -->
+        <div class="flex-1 flex flex-col">
+            <div class="flex items-center justify-between p-4 border-b border-gray-200 bg-white">
+                <div>
+                    <h2 class="text-xl font-bold">코인비엠에스</h2>
+                    <p class="text-sm text-gray-500">부서장</p>
+                </div>
+                <div class="flex items-center">
+                    <button class="p-2 rounded-full hover:bg-gray-200">
+                        <img src="https://via.placeholder.com/24" alt="Icon">
+                    </button>
+                    <button class="p-2 rounded-full hover:bg-gray-200">
+                        <img src="https://via.placeholder.com/24" alt="Icon">
                     </button>
                 </div>
-            </header>
-            <main class="body"></main>
-            <div></div>
-        </div>    
-    </div>
-    <div id="popupRoot"></div>
-    <div id="modalRoot"></div>
-
-    <div style="display: flex;">
-        <div class="left">
-            <jsp:include page="chatlist.jsp"/>
+            </div>
+            <div class="flex-1 overflow-y-auto p-4 bg-gray-100">
+                <div class="flex justify-end mb-4" style="align-items: flex-end;">
+                    <div style="margin-right: 10px;">
+                        <p class="text-sm text-gray-500 mt-2">오후 6:14</p>
+                    </div>
+                    <div class="bg-blue-500 text-white p-3 rounded-lg">
+                        연결합니다
+                    </div>
+                </div>
+                <div class="flex mb-4" style="align-items: flex-end;">
+                    <div class="bg-white p-3 rounded-lg shadow">
+                        <p>무엇이 궁금하신가요? 문의사항을 남겨주시면 확인 후 답변드리겠습니다.</p>
+                    </div>
+                    <div style="margin-left: 10px;">
+                        <p class="text-sm text-gray-500 mt-2">오후 6:15</p>
+                    </div>
+                </div>
+                <div class="flex mb-4" style="align-items: flex-end;">
+                    <div class="bg-white p-3 rounded-lg shadow">
+                        <p>안녕하세요 고객님 궁금하신점 남겨주시면 답변 해드리겠습니다.</p>
+                    </div>
+                    <div style="margin-left: 10px;">
+                        <p class="text-sm text-gray-500 mt-2">오후 6:32</p>
+                    </div>
+                </div>
+                <!--<div class="flex mb-4">
+                    <div class="bg-white p-3 rounded-lg shadow">
+                        <p>전시회 쿠폰식권 NT750...</p>
+                        <img src="https://via.placeholder.com/100" alt="Image" class="mt-2 rounded">
+                        <p class="text-sm text-gray-500 mt-2">상품보기</p>
+                    </div>
+                </div>-->
+            </div>
+            <div class="p-4 border-t border-gray-200 bg-white flex items-center">
+                <input type="text" placeholder="메시지를 입력하세요." class="flex-1 p-2 border border-gray-300 rounded mr-4">
+                <button class="p-2 rounded-full hover:bg-blue-400">
+                    <img src="../image/send.png" width="20px" alt="Icon">
+                </button>
+            </div>
         </div>
-        <div class="right">
-            <jsp:include page="chat.jsp"/>
-        </div>
     </div>
-
 </body>
 </html>

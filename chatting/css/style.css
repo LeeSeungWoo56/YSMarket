@@ -32,7 +32,7 @@ html, body {
 .display-container {
     flex: 12;
     background: #b2c7d9;
-    overflow: scroll;
+    overflow-y: auto;
 }
 .input-container {
     flex:1;
@@ -59,6 +59,10 @@ html, body {
     border: none;
     height: 100%;
     border-radius: 3px;
+}
+.send-button:hover {
+    cursor: pointer;
+    background:#0F4C81;
 }
 
 .chatting-list li {

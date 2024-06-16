@@ -3,5 +3,10 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry excluding="templete/" kind="src" path=""/>
 	<classpathentry kind="src" path="templete"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/javax.servlet-api-4.0.1.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/mail-1.4.7.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/jakarta.websocket-api-2.0.0.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/activation-1.1.1.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/cos.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

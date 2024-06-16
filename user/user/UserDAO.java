@@ -159,6 +159,9 @@ public class UserDAO {
                 
                 membersList.add(dto);
             }
+            rs.close();
+            pstmt.close();
+            conn.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -166,47 +169,6 @@ public class UserDAO {
         return membersList;
     }
     
-    //조회
-    public List<User> listmembers(User user) {
-        List<User> membersList = new ArrayList<User>();
-        String userID = user.getUserID();
-        try {
-            //
-            String query = "select * from user where UserID=?";
-            
-            if((userID != null && userID.length() != 0)) {
-                //query += " where name=?";
-                pstmt = conn.prepareStatement(query);
-                pstmt.setString(1, userID);
-            }else {
-                pstmt = conn.prepareStatement(query);
-            }
-            ResultSet rs = pstmt.executeQuery();
-            while(rs.next()) {
-                String id = rs.getString("id");
-                String pw = rs.getString("pwd");
-                String name = rs.getString("name");
-                String email = rs.getString("email");
-                Blob photo = rs.getBlob("joinDate");
-                
-                User dto = new User();
-                dto.setUserID(id);
-                dto.setUserPW(pw);
-                dto.setUserName(name);
-                dto.setUserEmail(email);
-                dto.setphoto(photo);
-                
-                membersList.add(dto);
-            }
-            rs.close();
-            pstmt.close();
-            conn.close();
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
-        return membersList;
-    }
-
     //회원탈퇴
     public int deleteUser(String userID, String userPW) {
         int result = login(userID, userPW);

@@ -1,0 +1,20 @@
+<Context path="/YSMarket" docBase="www">
+    <Resource
+        name="jdbc/yeonsung_id"
+        auth="Container"
+        type="javax.sql.DataSource"
+        driverClassName="com.mysql.cj.jdbc.Driver"
+        url="jdbc:mysql://localhost:3306/yeonsung_id?useUnicode=yes&amp;characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=UTC"
+        username="ysmarket3a"
+        password="ys080808!"
+        validationQuery="SELECT 1 FROM DUAL"
+        maxWait="5000"
+        testOnBorrow="true"
+        loginTimeout="10"
+    />
+    <ResourceLink
+        name="jdbc/yeonsung_id"
+        global="jdbc/yeonsung_id"
+        type="javax.sql.DataSource"
+    />
+</Context>

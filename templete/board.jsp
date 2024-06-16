@@ -1,65 +1,72 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>간단한 게시판</title>
+    <title>게시판</title>
 </head>
 <body>
-    <h1>간단한 게시판</h1>
+    <h1>게시판</h1>
     
-    <!-- 글쓰기 폼 -->
-    <form action="writePost.jsp" method="post">
-        <label for="author">작성자:</label>
-        <input type="text" id="author" name="author" required><br>
-        <label for="content">내용:</label><br>
-        <textarea id="content" name="content" rows="4" cols="50" required></textarea><br>
-        <button type="submit">글쓰기</button>
+    <form action="write.jsp" method="post">
+        작성자: <input type="text" name="author"><br>
+        카테고리:
+        <select name="category">
+            <%
+                // 데이터베이스 연결
+                String url = "jdbc:mysql://localhost:3306/yeonsung_id";
+                String username = "ysmarket3a";
+                String password = "ys080808!";
+                Connection conn = DriverManager.getConnection(category, categoryId, categoryName);
+                
+                // 카테고리 목록 조회
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery("SELECT * FROM categories");
+                while (rs.next()) {
+                    String categoryId = rs.getString("id");
+                    String categoryName = rs.getString("name");
+            %>
+            <option value="<%= categoryId %>"><%= categoryName %></option>
+            <% } %>
+        </select><br>
+        내용: <textarea name="content" rows="4" cols="50"></textarea><br>
+        <input type="submit" value="작성">
     </form>
     
     <hr>
     
-    <!-- 게시물 목록 -->
-    <h2>게시물 목록</h2>
-    <ul>
-        <% 
-            // 게시물 목록 출력
-            ArrayList<Post> posts = (ArrayList<Post>) request.getAttribute("posts");
-            if (posts != null && !posts.isEmpty()) {
-                for (Post post : posts) {
-        %>
-                    <li>
-                        <strong><%= post.getAuthor() %>:</strong> <%= post.getContent() %>
-                        <ul>
-                            <% 
-                                // 댓글 목록 출력
-                                ArrayList<Comment> comments = post.getComments();
-                                if (comments != null && !comments.isEmpty()) {
-                                    for (Comment comment : comments) {
-                            %>
-                                        <li><strong><%= comment.getAuthor() %>:</strong> <%= comment.getContent() %></li>
-                            <% 
-                                    }
-                                }
-                            %>
-                        </ul>
-                        <form action="writeComment.jsp" method="post">
-                            <input type="hidden" name="postId" value="<%= post.getId() %>">
-                            <label for="commentAuthor">댓글 작성자:</label>
-                            <input type="text" id="commentAuthor" name="commentAuthor" required>
-                            <label for="commentContent">댓글 내용:</label>
-                            <input type="text" id="commentContent" name="commentContent" required>
-                            <button type="submit">댓글 작성</button>
-                        </form>
-                    </li>
-        <% 
-                }
-            } else {
-        %>
-                <li>게시물이 없습니다.</li>
-        <% 
-            }
-        %>
-    </ul>
+    <h2>게시글 목록</h2>
+    <%
+        // 게시글 목록 조회
+        rs = stmt.executeQuery("SELECT posts.*, categories.name AS category_name FROM posts JOIN categories ON posts.category_id = categories.id ORDER BY created_at DESC");
+        while (rs.next()) {
+            String postId = rs.getString("id");
+            String author = rs.getString("author");
+            String category = rs.getString("category_name");
+            String content = rs.getString("content");
+            Timestamp createdAt = rs.getTimestamp("created_at");
+    %>
+    <div>
+        <b><%= author %> (카테고리: <%= category %>)</b><br>
+        <%= content %><br>
+        작성일: <%= createdAt %><br>
+        <!-- 댓글 폼 -->
+        <form action="comment.jsp" method="post">
+            <input type="hidden" name="post_id" value="<%= postId %>">
+            작성자: <input type="text" name="comment_author"><br>
+            내용: <textarea name="comment_content" rows="2" cols="30"></textarea><br>
+            <input type="submit" value="댓글 작성">
+        </form>
+        <hr>
+    </div>
+    <% } %>
+    
+    <% 
+        // 연결 및 자원 닫기
+        <!-- rs.close();
+        stmt.close();
+        conn.close(); -->
+    %>
 </body>
 </html>

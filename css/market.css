@@ -162,11 +162,7 @@ section {
 	font-weight: 700;
 }
 
-
-
-
 /* 만든이 */
-
 #memberlist {
 	margin-top: 10px;
 	display: flex;
@@ -188,3 +184,8 @@ section {
 	font-weight: bold;
 }
 
+/* 내정보 */
+#myinformation {
+	display: flex;
+	padding-top: 10px;
+}

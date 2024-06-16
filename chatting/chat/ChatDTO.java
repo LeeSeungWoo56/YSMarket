@@ -1,4 +1,4 @@
-package chatting;
+package chat;
 
 public class ChatDTO {
     private int chatroom_id;

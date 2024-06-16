@@ -12,3 +12,16 @@
     <jsp:include page="footer.jsp"/>
 </body>
 </html>
+
+<!--
+
+    cd ..\mail
+javac -encoding utf-8 -d ../../WEB-INF/classes -classpath ../../WEB-INF/classes User.java
+javac -encoding utf-8 -d ../../WEB-INF/classes -classpath ../../WEB-INF/classes UserDAO.java
+
+cd mailTest
+javac -d ../../WEB-INF/classes -cp "..\..\WEB-INF\lib\mail-1.4.7.jar" -encoding utf-8 SendMail.java
+
+cd mail
+javac -encoding utf-8 -d ../../WEB-INF/classes -classpath ../../WEB-INF/classes RandomCode.java
+ -->
