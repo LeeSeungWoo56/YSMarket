@@ -94,7 +94,7 @@
                 if(chatName !== sender_id){
                 $('#chatList').append('<li class="received">' +
                 '<span class="profile">' +
-                '<span class="user">' + name + '</span>' +
+                '<span class="user">' + chatName + '</span>' +
                 '<img class="image" src="../image/profile.png" alt="any">' +
                 '</span>' +
                 '<span class="message">' + content + '</span>' +
@@ -131,7 +131,7 @@
         
         <div class="wrapper">
             <div class="user-container">
-                <label for="nickname">대화명</label>
+                <label for="nickname"></label>
                 <!--<input type="text" id="nickname">-->
             </div>
             <div class="display-container">
@@ -146,7 +146,7 @@
         </div>
         <script>
             $(document).ready(function() {
-                chatListFunction('ten');
+                chatListFunction('0');
                 getInfiniteChat();
             });
         </script>

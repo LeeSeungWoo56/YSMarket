@@ -147,6 +147,50 @@ public class ChatDAO {
         return chatList; //리스트 반환
     }
     
+    //메시지 목록 불러오기
+    public ArrayList<ChatDTO> getBox(String userID){
+        ArrayList<ChatDTO> chatList = null;
+        conn = null;
+        pstmt = null;
+        rs = null;
+        String SQL = "WITH LatestMessages AS (SELECT *, ROW_NUMBER() OVER (PARTITION BY CASE WHEN sender_id < receiver_id THEN sender_id ELSE receiver_id END, CASE WHEN sender_id < receiver_id THEN receiver_id ELSE sender_id END ORDER BY timestamp DESC) AS rn FROM message WHERE sender_id = ? OR receiver_id = ? ) SELECT message_id, sender_id, receiver_id, content, timestamp FROM LatestMessages WHERE rn = 1 ORDER BY timestamp DESC";
+        try{
+            conn = dataSource.getConnection();
+            pstmt = conn.prepareStatement(SQL);
+            pstmt.setString(1, userID);
+            pstmt.setString(2, userID);
+            //pstmt.setInt(5, number);
+            rs = pstmt.executeQuery();
+            chatList = new ArrayList<ChatDTO>();
+            while (rs.next()){
+                ChatDTO chat = new ChatDTO();
+                chat.setMessage_id(rs.getInt("message_id"));
+                chat.setSender_id(rs.getString("sender_id").replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>"));
+                chat.setReceiver_id(rs.getString("receiver_id").replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>"));
+                chat.setContent(rs.getString("content").replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>"));
+                int timestamp = Integer.parseInt(rs.getString("timestamp").substring(11, 13));
+                String timeType = "오전";
+                if( timestamp >= 12){
+                    timeType = "오후";
+                    timestamp -= 12;
+                }
+                chat.setTimeStamp(rs.getString("timestamp").substring(0, 11) + " " + timeType + " " + timestamp + ":" + rs.getString("timestamp").substring(14, 16)+ "");
+                chatList.add(chat);
+            }
+        } catch(Exception e){
+            e.printStackTrace();
+        } finally {
+            try {
+                if(rs != null) rs.close();
+                if(pstmt != null) pstmt.close();
+                if(conn != null) conn.close();
+            } catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+        return chatList; //리스트 반환
+    }
+
     public int submit(String sender_id, String receiver_id, String content){
         conn = null;
         pstmt = null;

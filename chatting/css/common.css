@@ -4,7 +4,8 @@ body {  font-size: 11px;}
 .chat_list_wrap .header {  font-size: 14px;  padding: 15px 0;  background: #F18C7E;  color: white;  text-align: center;  font-family: "Josefin Sans", sans-serif;}
 .chat_list_wrap .search {  background: #eee;  padding: 5px;}
 .chat_list_wrap .search input[type="text"] {  width: 100%;  border-radius: 4px;  padding: 5px 0;  border: 0;  text-align: center;}
-.chat_list_wrap .list {  padding: 0 16px;}
+.list-btn {display: block; width:100%; padding:0 16px;  border:none;  background:none;}
+.list-btn:hover {  background: #f2f3f6;  cursor: pointer;}
 .chat_list_wrap .list ul {  width: 100%;  list-style: none;  margin-top: 3px;}
 .chat_list_wrap .list ul li {  padding-top: 10px;  padding-bottom: 10px;  border-bottom: 1px solid #e5e5e5;}
 .chat_list_wrap .list ul li table {  width: 100%;}
